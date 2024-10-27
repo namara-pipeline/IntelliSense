@@ -1,0 +1,32 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "sample",
+			"type": "shell",
+			"command": "x86_64-w64-mingw32-g++",	// x86_64用
+			"args": [
+				"-g",
+				"-m64",		// これでlong が 64bitになる
+				"${workspaceFolder}/src/main.c",
+				"${workspaceFolder}/src/test.c",
+				"-L${workspaceFolder}",
+				"-I../public",
+				"-I../private",
+				"-o",
+				"${workspaceFolder}/test.exe"	// 出力ファイル名
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": ["$gcc"],
+			"detail": "Generated task for building the project"
+		}
+	]
+}
